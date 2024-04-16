@@ -54,8 +54,7 @@ class Player {
       this.y = Math.round(this.y);
       }
 
-    draw(ctx) {
-      ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    draw(ctx) {     
       ctx.drawImage(this.sprite, this.frameIndex * this.spriteWidth, this.direction * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x, this.y, this.spriteWidth, this.spriteHeight);
     }
 

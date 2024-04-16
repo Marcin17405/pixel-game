@@ -1,20 +1,24 @@
 class Map {
-    constructor(tileSize, mapData, tilesetImgSrc) {
-        this.tileSize = tileSize;
-        this.mapData = mapData;
-        this.tileset = new Image();
-        this.tileset.src = tilesetImgSrc;
+  constructor(tileSize, mapData, tilesetImgSrc) {
+    this.tileSize = tileSize;
+    this.mapData = mapData;
+    this.tileset = new Image();
+    this.tileset.src = tilesetImgSrc;
+  }
+  
+    draw(ctx) {
+      var	tileSize	= 16;   
+      var	imageNumTiles	= 11;
+      for(var	i	= 0;	i< this.mapData.length;	i++)	{	
+        for(var	j	= 0;	j	< this.mapData[i].length;	j++)	{	
+          var	tile	= this.mapData[i][j];														
+          var	tileRow	=	(tile	/	imageNumTiles)	|	0;
+          var	tileCol	=	(tile	%	imageNumTiles)	|	0;	
+          ctx.drawImage(this.tileset,	(tileCol	*	tileSize),	(tileRow	*	tileSize),	tileSize,	tileSize,	(j	*	tileSize),	(i	*	tileSize),	tileSize,	tileSize);															
+        }	
       }
-    
-      draw(ctx) {
-        for (let row = 0; row < this.mapData.length; row++) {
-          for (let col = 0; col < this.mapData[row].length; col++) {
-            const tile = this.mapData[row][col];
-            const tileX = col * this.tileSize;
-            const tileY = row * this.tileSize;
-            ctx.drawImage(this.tileset, tile * this.tileSize, 0, this.tileSize, this.tileSize, tileX, tileY, this.tileSize, this.tileSize);
-          }
-        }
+      
+      
     }
-}
-export {Map};
+  }
+  export {Map};
