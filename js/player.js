@@ -18,30 +18,31 @@ class Player {
     }
 
     update(keys) {
-      const speed = 2;
+      let speed = 2;
       let dx = 0;
       let dy = 0;
-
-      if (keys[37]) { // Left arrow key
+      if(keys[16]){
+        speed = 3
+      }
+      if (keys[37] && this.x >-17) { // Left arrow key
         dx -= speed;
         this.animateLeft();
       }
-      if (keys[38]) { // Up arrow key
+      if (keys[38] && this.y >-16) { // Up arrow key
         dy -= speed;
         this.animateUp();
       }
-      if (keys[39]) { // Right arrow key
+      if (keys[39] && this.x +this.spriteWidth <657) { // Right arrow key
         dx += speed;
         this.animateRight();
       }
-      if (keys[40]) { // Down arrow key
+      if (keys[40]&& this.y+this.spriteHeight <416) { // Down arrow key
         dy += speed;
         this.animateDown();
       }
       if (!keys[37] && !keys[38] && !keys[39] && !keys[40]){
         this.animateIdle();
       }
-
       if (dx !== 0 && dy !== 0) {
         dx *= Math.sqrt(0.5);
         dy *= Math.sqrt(0.5);
